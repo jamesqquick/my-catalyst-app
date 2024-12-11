@@ -81,6 +81,7 @@ type Props<S extends SearchResult> = {
   cartCount?: number;
   cartHref: string;
   links: Link[];
+  linksAlignment: 'center' | 'right';
   locales?: Locale[];
   activeLocaleId?: string;
   localeAction?: LocaleAction;
@@ -164,6 +165,7 @@ export const Navigation = forwardRef(function Navigation<S extends SearchResult>
     // cartCount,
     accountHref,
     links,
+    linksAlignment,
     logo,
     logoHref = '/',
     activeLocaleId,
@@ -344,7 +346,12 @@ export const Navigation = forwardRef(function Navigation<S extends SearchResult>
           ))}
         </ul>
 
-        <div className="flex flex-1 items-center justify-end transition-colors duration-300">
+        <div
+          className={clsx(
+            'flex items-center justify-end transition-colors duration-300',
+            linksAlignment === 'center' ? 'flex-1' : '',
+          )}
+        >
           {searchAction && (
             <Popover.Root onOpenChange={setIsSearchOpen} open={isSearchOpen}>
               <Popover.Anchor className="absolute left-0 right-0 top-full" />
@@ -376,7 +383,6 @@ export const Navigation = forwardRef(function Navigation<S extends SearchResult>
               </Popover.Portal>
             </Popover.Root>
           )}
-
           <Link
             aria-label="Profile"
             className="rounded-lg p-1.5 ring-primary focus-visible:outline-0 focus-visible:ring-2 @4xl:hover:bg-contrast-100"
@@ -398,7 +404,6 @@ export const Navigation = forwardRef(function Navigation<S extends SearchResult>
           </Link> */}
           {/* TODO: Remove custom Cart component when PPR is enabled */}
           {cart}
-
           {/* Locale / Language Dropdown */}
           {locales && locales.length > 1 && localeAction ? (
             <LocaleForm

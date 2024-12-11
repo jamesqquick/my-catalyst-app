@@ -1,4 +1,13 @@
-import { Checkbox, Image, Link, List, Shape, Slot, TextInput } from '@makeswift/runtime/controls';
+import {
+  Checkbox,
+  Image,
+  Link,
+  List,
+  Select,
+  Shape,
+  Slot,
+  TextInput,
+} from '@makeswift/runtime/controls';
 
 import { runtime } from '~/lib/makeswift/runtime';
 
@@ -28,5 +37,13 @@ runtime.registerComponent(MakeswiftHeader, {
     searchCtaLabel: TextInput({ label: 'Search CTA label' }),
     emptySearchTitleLabel: TextInput({ label: 'Empty search title label' }),
     emptySearchSubtitleLabel: TextInput({ label: 'Empty search subtitle label' }),
+    // linksAlignment: Select({
+    //   label: 'Links alignment',
+    //   options: [
+    //     { value: 'center', label: 'Center' },
+    //     { value: 'right', label: 'Right' },
+    //   ],
+    //   defaultValue: 'center',
+    // }),
   },
 });

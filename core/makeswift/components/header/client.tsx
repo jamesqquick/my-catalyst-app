@@ -20,6 +20,7 @@ const PropsContext = createContext<Props>({
     cartHref: '',
     searchHref: '',
     links: [],
+    linksAlignment: 'center',
   },
 });
 
@@ -33,6 +34,7 @@ export const MakeswiftHeader = forwardRef(
       showBanner,
       banner,
       links,
+      linksAlignment = 'center',
       logo,
       searchInputPlaceholder,
       searchCtaLabel,
@@ -44,6 +46,7 @@ export const MakeswiftHeader = forwardRef(
         label: string;
         link: { href: string };
       }>;
+      linksAlignment?: 'center' | 'right';
       logo?: string;
       searchInputPlaceholder?: string;
       searchCtaLabel?: string;
@@ -65,6 +68,7 @@ export const MakeswiftHeader = forwardRef(
             ...passedProps.links,
             ...links.map(({ label, link }) => ({ label, href: link.href })),
           ],
+          linksAlignment: linksAlignment,
           logo: logo ? { src: logo, alt: 'Logo' } : passedProps.logo,
           searchInputPlaceholder: searchInputPlaceholder ?? passedProps.searchInputPlaceholder,
           searchCtaLabel: searchCtaLabel ?? passedProps.searchCtaLabel,
